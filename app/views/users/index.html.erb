@@ -1,2 +1,14 @@
-<h1>Users Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Users Users</h1>
+
+<%= render "books/list", book: @book_new, user: @user %>
+
+
+<% @users.each do |users| %>
+<div>
+  <image_tag users.get_image %>
+  <%= image_tag'sample-author1.jpg' %>
+  <%=users.name %>
+</div>
+<% end %>
+
+ <%= link_to "Show", user_path(current_user.id) %>

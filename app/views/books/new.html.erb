@@ -1,8 +1,0 @@
-<h2>New book #new</h2>
- <%= form_with model: @books do |f| %>
-  <p>Title</p>
-   <%= f.text_field :title %>
-  <p>Option</p>
-   <%= f.text_area :body %>
-  <%= f.submit 'CreateBook' %>
-  <% end %>

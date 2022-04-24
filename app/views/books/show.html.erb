@@ -1,12 +1,18 @@
-<h2>Book detail #show</h2>
+<h2>Book detail</h2>
+
+<%= render "books/list", book: @book_new, user: @user %>
+
 <div>
- <%= image_tag 'sample-author1.jpg' %>
- <%= @book.user.name %>
- <%= @book.title %>
+ <%= image_tag @book.user.get_profile_image(100,100) %>
+ <%= link_to @book.user.name, user_path(current_user.id) %>
+ <%= link_to @book.title, book_path(@book) %>
  <%= @book.body %>
 </div>
 
- <% if @book.user == current_user %>
+<%= link_to "Edit", edit_book_path %>
+
+<% if @book.user == current_user %>
    <%= link_to "Destroy", book_path(@book), method: :delete %>
- <% end %>
+<% end %>
+
 
