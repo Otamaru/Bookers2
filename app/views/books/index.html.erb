@@ -1,16 +1,45 @@
 <!-- Userinfo(左側)部分テンプレ―ト -->
-<%= render "books/list", book: @book_, user: current_user %>
+<div class= "container">
+ <div class= "row">
+
+  <div class="col-md-3">
+   <%= render "books/list", book: @book_new, user: @user %>
+  </div>
 
 <!-- Books(右側） -->
-<h2>Books</h2>
-<% @books.each do |book| %>
-<div>
- <%= link_to user_path(current_user.id) do %>
-  <%= image_tag book.user.get_profile_image(100,100) %>
- <% end %>
- <p>Title</p>
- <%= link_to book.title, book_path(book) %>
- <p>Option</p>
- <%= book.body %>
+  <div class="col-md-8 offset-md-1">
+
+    <h2>Books</h2>
+    <table class="table table-hover table-inverse">
+    <thead>
+     <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+     </tr>
+    </thead>
+
+
+    <% @books.each do |book| %>
+    <tbody>
+     <tr>
+      <td>
+       <%= link_to user_path (book.user) do %>
+        <%= image_tag book.user.get_profile_image(100,100) %>
+       <% end %>
+      </td>
+      <td>
+       <%= link_to book.title, book_path(book) %>
+      </td>
+      <td>
+       <%= book.body %>
+      </td>
+     </tr>
+     </tbody>
+     <% end %>
+    </table>
+
 </div>
-<% end %>
+</div>
+</div>
